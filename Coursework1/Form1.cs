@@ -24,6 +24,7 @@ namespace Coursework1
             this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
             dataGridView2.AllowUserToAddRows = false;
+            total_amount.Text = "";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -78,7 +79,7 @@ namespace Coursework1
                 }
                 itemNameTextbox.Text = "";
                 priceTextBox.Text = "";
-                comboBox1.ResetText();
+                
 
                 this.status = false;
                 this.row = 0;
@@ -88,112 +89,6 @@ namespace Coursework1
                 MessageBox.Show("Fields are empty!!");
             }
 
-        }
-
-        private void btn_add_Click(object sender, EventArgs e)
-        {
-
-
-            //    private void btn_clear_Click(object sender, EventArgs e)
-            //    {
-            //        item_text.Text = "";
-            //        price_text.Text = "";
-            //    }
-
-            //    private void button2_Click(object sender, EventArgs e)
-            //    {
-            //        dataGridView1.Rows.Clear();
-
-            //    }
-
-            //    private void btn_import_Click(object sender, EventArgs e)
-            //    {
-            //OpenFileDialog dialog = new OpenFileDialog();
-            //dialog.Filter = "Files(*.txt,*.csv)|*.txt;*.csv|All files (*.*) | *.*";
-            //DialogResult result = dialog.ShowDialog();
-            //if (result == DialogResult.OK)
-            //{
-            //    import_location.Text = dialog.FileName;
-            //    string val = import_location.Text;
-            //    importCSVFile(val);
-            //}
-            //    }
-
-            //    private void importCSVFile(string filepath)
-            //    {
-            //try
-            //{
-            //    TextFieldParser csvreader = new TextFieldParser(filepath);
-            //    csvreader.SetDelimiters(new string[] { "," });
-            //    csvreader.HasFieldsEnclosedInQuotes = true;
-            //    csvreader.ReadFields();
-            //    while (!csvreader.EndOfData)
-            //    {
-            //        string[] fielddata = csvreader.ReadFields();
-            //        for (int i = 0; i < fielddata.Length; i++)
-            //        {
-            //            dataGridView1.Rows.Add(fielddata);
-            //            break;
-            //            //Console.Write(fielddata[i] + "\t");
-            //        }
-            //        Console.WriteLine("");
-            //    }
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Import CSV File", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-            //    }
-
-            //    private void item_text_KeyPress(object sender, KeyPressEventArgs e)
-            //    {
-            //if (char.IsDigit(e.KeyChar))
-            //{
-            //    e.Handled = true;
-            //}
-            //    }
-
-            //    private void price_text_KeyPress(object sender, KeyPressEventArgs e)
-            //    {
-            //if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != (char)46)
-            //{
-            //    e.Handled = true;
-            //}
-            //    }
-
-            //    private void quantity_textbox_KeyPress(object sender, KeyPressEventArgs e)
-            //    {
-            //        if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            //        {
-            //            e.Handled = true;
-            //        }
-            //    }
-
-            //    private void btn_biiling_Click(object sender, EventArgs e)
-            //    {
-
-            //for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
-            //{
-            //    this.dataGridView2.Rows.Add(dataGridView1.Rows[i].Cells[0].Value, dataGridView1.Rows[i].Cells[1].Value, dataGridView1.Rows[i].Cells[2].Value);
-
-            //}
-            //    }
-
-            //    private void button1_Click(object sender, EventArgs e)
-            //    {
-            //int sum = 0;
-            //for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            //{
-            //    sum += Convert.ToInt32(dataGridView1.Rows[i].Cells[1].Value);
-
-            //}
-            //label1.Text = sum.ToString();
-            //    }
-
-
-
-            //}
         }
 
         private void btn_clear_Click(object sender, EventArgs e)
@@ -267,58 +162,33 @@ namespace Coursework1
             
             }
             dataGridView2.DataSource = dt;
-            
-      
-
-            //try
-            //{
-
-
-            //    int s = dataGridView1.CurrentCell.RowIndex;
-            //    int j = dataGridView2.Rows.Count - 1;
-            //    //int b = dataGridView1.SelectedRows.Count;
-            //    //b = s;
-
-            //    //if (Convert.ToBoolean(dataGridView1.Rows[s].Cells[3].Value) == true)
-            //    //{
-            //    //    for (int i = 0; i >= dataGridView2.Rows.Count; i++)
-            //    //    {
-            //    //        dataGridView2.Rows.Add(dataGridView1.Rows[b].Cells[0].Value, dataGridView1.Rows[b].Cells[1].Value, dataGridView1.Rows[b].Cells[2].Value);
-            //    //        dataGridView1.Rows[b].Cells[3].Value = false;
-            //    //    }
-            //    //}
-            //    for (int i = s; i >= j; i++)
-            //    {
-            //        if (Convert.ToBoolean(dataGridView1.Rows[i].Cells[3].Value) == true)
-            //        {
-            //            dataGridView2.Rows.Add(dataGridView1.Rows[i].Cells[0].Value, dataGridView1.Rows[i].Cells[1].Value, dataGridView1.Rows[i].Cells[2].Value);
-            //            dataGridView1.Rows[i].Cells[3].Value = false;
-
-            //        }
-
-            //    }
-            //}
-
-            //catch (Exception) { }
-            
-         
+                           
         }
 
         private void btn_clearAll_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
+            MessageBox.Show("All items cleared from Menu Table!!");
         }
 
 
         private void btn_Bill_Click_1(object sender, EventArgs e)
         {
-            int sum = 0;
-            for (int i = 0; i < dataGridView2.Rows.Count; i++)
+            if (dataGridView2.Rows.Count > 0)
             {
-                sum += Convert.ToInt32(dataGridView2.Rows[i].Cells[1].Value);
+                int sum = 0;
+                for (int i = 0; i < dataGridView2.Rows.Count; i++)
+                {
+                    sum += Convert.ToInt32(dataGridView2.Rows[i].Cells[1].Value);
 
+                }
+                total_amount.Text = "Rs. " + sum.ToString() + "/-";
             }
-            total_amount.Text = "Rs. "+sum.ToString()+ "/-";
+            else
+            {
+                MessageBox.Show("Add items to calculate total amount!!");
+            }
+            
         }
 
         private void btn_sortItem_Click(object sender, EventArgs e)
@@ -370,13 +240,17 @@ namespace Coursework1
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            int selectedRow = dataGridView1.CurrentCell.RowIndex;
-
-            if (selectedRow >= 0)
+            if (dataGridView1.Rows.Count > 1 && dataGridView1.Rows != null)
             {
-                dataGridView1.Rows.RemoveAt(selectedRow);
-                dataGridView1.Refresh();
+                int selectedRow = dataGridView1.CurrentCell.RowIndex;
+
+                if (selectedRow >= 0)
+                {
+                    dataGridView1.Rows.RemoveAt(selectedRow);
+                    MessageBox.Show("Items Removed from Menu Table!!");
+                }
             }
+            
             else
             {
                 MessageBox.Show("No data to delete!!");
@@ -385,16 +259,24 @@ namespace Coursework1
 
         private void btn_generateSalesReport_Click(object sender, EventArgs e)
         {
-            dailySales.Series["DailySales"].Points.Clear();
-            category.Clear();
-            itemPrice.Clear();
-            sum();
-            generateChart();
+            if (total_amount.Text != "" )
+            {
+                dailySales.Series["DailySales"].Points.Clear();
+                category.Clear();
+                itemPrice.Clear();
+                sum();
+                generateChart();
+            }
+            else
+            {
+                MessageBox.Show("Calculate the total amount of sales!!");
+            }
+            
         }
 
         private void generateChart()
         {
-            for (int i = 0; i < this.category.Count; i++)
+            for (int i = 0; i < this.category.Count ; i++)
             {
                 dailySales.Series["DailySales"].Points.Add(this.itemPrice[i]);
                 dailySales.Series["DailySales"].Points[i].LegendText = this.category[i];
@@ -404,7 +286,7 @@ namespace Coursework1
 
         private void sum()
         {
-            for (int i = 0; i < dataGridView2.Rows.Count - 1; i++)
+            for (int i = 0; i < dataGridView2.Rows.Count; i++)
             {
                 string category1 = Convert.ToString(dataGridView2.Rows[i].Cells[2].Value);
                 int price1 = Convert.ToInt16(dataGridView2.Rows[i].Cells[1].Value);
@@ -412,10 +294,10 @@ namespace Coursework1
                 if (i == 0)
                 {
                     int sum = price1;
-                    for (int j = 1; j < dataGridView2.Rows.Count - 1; j++)
+                    for (int j = 1; j < dataGridView2.Rows.Count-1 ; j++)
                     {
-                        string category2 = Convert.ToString(dataGridView2.Rows[i].Cells[2].Value);
-                        int price2 = Convert.ToInt16(dataGridView2.Rows[i].Cells[1].Value);
+                        string category2 = Convert.ToString(dataGridView2.Rows[j].Cells[2].Value);
+                        int price2 = Convert.ToInt16(dataGridView2.Rows[j].Cells[1].Value);
 
                         if (category1 == category2)
                         {
@@ -428,13 +310,13 @@ namespace Coursework1
                 else if (!this.category.Contains(category1))
                 {
                     int sum = price1;
-                    for (int j = i + 1; j < dataGridView2.Rows.Count - 1; j++)
+                    for (int j = i+1; j < dataGridView2.Rows.Count-1; j++)
                     {
-                        string category2 = Convert.ToString(dataGridView2.Rows[i].Cells[2].Value);
-                        int price2 = Convert.ToInt16(dataGridView2.Rows[i].Cells[1].Value);
+                        string category2 = Convert.ToString(dataGridView2.Rows[j].Cells[2].Value);
+                        int price2 = Convert.ToInt16(dataGridView2.Rows[j].Cells[1].Value);
                         if (category1 == category2)
                         {
-                            sum += price2;
+                            sum += price1;
                         }
                     }
                     this.category.Add(category1);
@@ -450,17 +332,40 @@ namespace Coursework1
 
         private void btn_remove_Click(object sender, EventArgs e)
         {
-            int selectedRow = dataGridView2.CurrentCell.RowIndex;
-            if (selectedRow >= 0)
+            if (dataGridView2.Rows.Count != 0 && dataGridView2.Rows != null)
             {
-            
-                dataGridView2.Rows.RemoveAt(selectedRow);
-                dataGridView2.Refresh();
+                int selectedRow = dataGridView2.CurrentCell.RowIndex;
+                if (selectedRow >= 0)
+                {
+
+                    dataGridView2.Rows.RemoveAt(selectedRow);
+                    MessageBox.Show("Item Removed from User Sales Table!!");
+                    
+                }
             }
             else
             {
-                MessageBox.Show("No data to delete!!");
+                MessageBox.Show("Empty!!");
             }
+            
+        }
+
+        private void btn_clear_datagridview2_Click(object sender, EventArgs e)
+        {
+            
+            int totalRows = dataGridView2.Rows.Count;
+            if (totalRows >= 0)
+            {
+                dataGridView2.DataSource = "";
+                MessageBox.Show("All items cleared from User Sales Table!!");
+            }
+            total_amount.Text = "";
+
+        }
+
+        private void dailySales_Click(object sender, EventArgs e)
+        {
+
         }
 
         
