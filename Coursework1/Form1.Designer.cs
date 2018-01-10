@@ -392,7 +392,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(457, 28);
             this.comboBox1.TabIndex = 5;
-            this.comboBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox1_KeyPress);
             // 
             // btn_add_items
             // 
@@ -452,7 +451,6 @@
             this.dailySales.Size = new System.Drawing.Size(986, 730);
             this.dailySales.TabIndex = 5;
             this.dailySales.Text = "chart1";
-            this.dailySales.Click += new System.EventHandler(this.dailySales_Click);
             // 
             // label2
             // 
